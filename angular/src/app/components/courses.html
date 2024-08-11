@@ -3,3 +3,15 @@
 <div *ngFor="let course of courses">
     <div>{{ course }}</div>
 </div>
+<button class="btn btn-primary" [class.active]="isActive">Save</button>
+<button [style.backgroundColor]="isActive ? 'blue': 'white'">Save</button>
+<button (click)="onSave($event)">Save</button>
+<input [(ngModel)]="email" (keyup.enter)="onKeyUp()" />
+
+<div>
+    {{course.title | uppercase}}<br />
+    {{course.students | number}}<br />
+    {{ course.rating | number:'1.2-2' }}<br />
+    {{course.price | currency:'AUD':true:'3.2-2'}}<br />
+    {{course.releaseDate | date:'shortDate'}}<br />
+</div>
