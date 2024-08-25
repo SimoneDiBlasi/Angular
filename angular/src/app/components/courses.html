@@ -15,3 +15,7 @@
     {{course.price | currency:'AUD':true:'3.2-2'}}<br />
     {{course.releaseDate | date:'shortDate'}}<br />
 </div>
+
+<div (click)="onActive()">
+    <i [class]="isActive ? 'bi bi-star-fill' : 'bi bi-star'"></i>
+</div>

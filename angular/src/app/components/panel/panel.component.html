@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <ng-content select=".heading"></ng-content>
+    </div>
+    <div class="panel-body">
+        <ng-content select=".body"></ng-content>
+    </div>
+    <div (click)="onClick()">
+        <i [class]="!isClicked ? 'bi bi-heart' : 'bi bi-heart-fill'" [style.color]="!isClicked ? '' : 'pink'"></i>
+        {{numberOfClick}}
+    </div>
+</div>

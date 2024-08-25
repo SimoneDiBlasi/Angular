@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { CoursesService } from "./courses.service";
 import { FormsModule } from '@angular/forms';
@@ -8,14 +8,21 @@ import { FormsModule } from '@angular/forms';
     standalone: true,
     templateUrl: './courses.html',
     imports: [CommonModule, FormsModule],
-    providers: [CoursesService]
+    providers: [CoursesService],
+    inputs: ['isFavorite']
 })
 export class CoursesComponent {
+    @Input()
+    isFavorite: boolean = false;
+
+    @Output()
+    change = new EventEmitter()
     courses: string[] = [];
     coursesLength: number | null = null;
     title: string = "List of courses";
     isActive: boolean = true;
     email: string = '';
+    titleInput: string = '';
 
     course: any = {
         title: "The complete Angular Course",
@@ -36,6 +43,11 @@ export class CoursesComponent {
     }
     onKeyUp() {
         console.log(this.email);
+    }
+
+    onActive() {
+        this.isActive = !this.isActive;
+        this.change.emit();
     }
 
 }
